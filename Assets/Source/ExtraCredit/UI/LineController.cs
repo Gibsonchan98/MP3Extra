@@ -21,9 +21,9 @@ public class LineController : MonoBehaviour
         C.onValueChanged.AddListener(SetLineC);
 
         A.isOn = false;
-        B.isOn = true;
-        C.isOn = false;
-        SetLineB(true);
+        B.isOn = false;
+        C.isOn = true;
+        SetLineC(true);
     }
 
     // Update is called once per frame

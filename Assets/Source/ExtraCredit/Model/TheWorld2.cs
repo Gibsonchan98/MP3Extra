@@ -13,15 +13,15 @@ public class TheWorld2 : MonoBehaviour
     public GameObject P1, P2;
     public GameObject ThePlane;
 
-    private GameObject mPrefab;
-    TravellingBall newObject;
+
+    TravellerExtra newObject;
     Vector3 velocity = Vector3.zero;
     float D = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(ThePlane.transform.localPosition);
         bLine = BigLine.GetComponent<BigLine>();
     }
 
@@ -94,12 +94,12 @@ public class TheWorld2 : MonoBehaviour
     public GameObject CreateObject(float timer, float lifetime)
     {
 
-        GameObject sphere = Instantiate(Resources.Load("TravellingBall")) as GameObject;
+        GameObject sphere = Instantiate(Resources.Load("Travelling2")) as GameObject;
 
         //Just to set up correct position at center of endpoint
         sphere.transform.position = P1.transform.position;
 
-        newObject = sphere.GetComponent<TravellingBall>();
+        newObject = sphere.GetComponent<TravellerExtra>();
 
         setVectors();
         setSpan(lifetime);
@@ -134,6 +134,7 @@ public class TheWorld2 : MonoBehaviour
 
     public void setBarrier()
     {
+        
         newObject.setBarrier(ThePlane);
     }
 

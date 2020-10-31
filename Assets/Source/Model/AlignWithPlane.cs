@@ -11,6 +11,7 @@ public class AlignWithPlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Normal = Instantiate(Resources.Load("NormalLine")) as GameObject;
         //turn off shadows
         transform.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         GameObject temp = transform.GetChild(0).gameObject; 

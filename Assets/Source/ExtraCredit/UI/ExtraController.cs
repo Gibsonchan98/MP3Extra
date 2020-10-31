@@ -25,6 +25,13 @@ public class ExtraController : MonoBehaviour
         g = TheWorld.ThisPlane();
         PlaneControl.SetSelectedObject(g);
         LControl.SetLines(Helper.SetLineAObject(), Helper.SetLineBObject(), Helper.SetLineCObject());
+
+        //set initial line
+        GameObject a, b, c;
+        a = Helper.SetLineSegment(2);
+        b = Helper.SetP1(2);
+        c = Helper.SetP2(2);
+        TheWorld.SetLineSegment(b, c, a);
     }
 
     // Update is called once per frame

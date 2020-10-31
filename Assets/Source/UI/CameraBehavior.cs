@@ -50,10 +50,11 @@ public class CameraBehavior : MonoBehaviour
             TheWorld1.SetActive(false);
             cam1.SetActive(false);
             cam2.SetActive(true);
+            LinePanel.SetActive(true);
             TheWorldExtra.SetActive(true);
             SecondControl.SetActive(true);
             ControPanel.SetActive(true);
-            LinePanel.SetActive(true);
+            
             ControPanel.GetComponent<Image>().enabled = true;
             LinePanel.GetComponent<Image>().enabled = true;
         }

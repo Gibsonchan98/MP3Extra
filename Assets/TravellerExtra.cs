@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class TravellingBall : MonoBehaviour
+public class TravellerExtra : MonoBehaviour
 {
     public GameObject shadow;
-    public GameObject Barrier; 
+    public GameObject Barrier;
     float t = 80;
     float D = 0;
     Vector3 velocity = Vector3.zero;
     float span = 10f;
 
-    Vector3 V, N; 
+    Vector3 V, N;
     float radius;
     float planeS;
 
@@ -44,14 +43,14 @@ public class TravellingBall : MonoBehaviour
         Vector3 tempPos = transform.localPosition + t1 * velocity;
 
         //distance between obj and center
-        V = transform.position - center; 
+        V = transform.position - center;
 
         //distance between hitpoint and center
         Vector3 dist = (center - tempPos);
         float distMag = dist.magnitude;
 
         //perpendicular distcance from point to plane
-        float h = Vector3.Dot(transform.localPosition, n) - d; 
+        float h = Vector3.Dot(transform.localPosition, n) - d;
 
         //set shadow to that position
         shadow.transform.localPosition = transform.localPosition - (n * h);
@@ -76,7 +75,7 @@ public class TravellingBall : MonoBehaviour
                         setNewVelocity();
                     }
                 }
-                
+
                 if (distMag < radius)
                 {
                     if (within < radius)
@@ -107,7 +106,8 @@ public class TravellingBall : MonoBehaviour
             }
 
         }
-        else {
+        else
+        {
             shadow.GetComponent<Renderer>().enabled = false;
         }
 
@@ -118,27 +118,30 @@ public class TravellingBall : MonoBehaviour
         span = lifeSpan;
     }
 
-    public void SetSpeed(float t2, float D2, Vector3 velocity2) {
+    public void SetSpeed(float t2, float D2, Vector3 velocity2)
+    {
         D = D2;
         t = t2;
         velocity = velocity2;
     }
 
-    public void SetVectors(Vector3 normal, Vector3 centerPos, Vector3 size) {     
+    public void SetVectors(Vector3 normal, Vector3 centerPos, Vector3 size)
+    {
         n = normal;
         center = centerPos;
         radius = size.y * .5f;
         planeS = size.x - 5.8f;
     }
 
-    public void setBarrier(GameObject plane) {
+    public void setBarrier(GameObject plane)
+    {
         Barrier = plane;
     }
 
-    public void setNewVelocity() {
+    public void setNewVelocity()
+    {
         Vector3 r = velocity - 2 * (Vector3.Dot(velocity, n)) * n;
         r.Normalize();
-        velocity = r; 
+        velocity = r;
     }
 }
-
